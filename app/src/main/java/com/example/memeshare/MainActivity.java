@@ -13,16 +13,21 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.example.memeshare.databinding.ActivityMainBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         loadMeme();
     }
 
@@ -39,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             String img_url = response.getString("url");
+
+                            Glide.with(binding.ivMeme).load(img_url).into(binding.ivMeme);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -57,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void nextMeme(View view) {
+        loadMeme();
     }
 
     public void shareMeme(View view) {
