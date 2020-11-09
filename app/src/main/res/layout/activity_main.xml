@@ -17,6 +17,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/iv_meme"
+        app:layout_constraintLeft_toLeftOf="@id/iv_meme"
+        app:layout_constraintRight_toRightOf="@id/iv_meme"
+        app:layout_constraintBottom_toBottomOf="@id/iv_meme"/>
+
     <Button
         android:id="@+id/btn_share"
         android:layout_width="0dp"
